@@ -57,18 +57,17 @@ with open('a1terms.txt', 'r') as s:
     
 #search for md locations only for today
 date = getDate()
-print(date)
-#courtdf = courtdf.replace(np.nan, '', regex=True)
-#a1date = courtdf[courtdf['date_created'].str.contains(date)]
-#if (len(a1date) > 0):
-#    irow = a1date.iterrows()
-#    for a in irow:
-#        print(a[1]['date_created'])
+courtdf = courtdf.replace(np.nan, '', regex=True)
+a1date = courtdf[courtdf['date_created'].str.contains(date)]
+if (len(a1date) > 0):
+    irow = a1date.iterrows()
+    for a in irow:
+        print(a[1]['date_created'])
 
-#for t in a1terms:
-#    search = a1date[a1date['plain_text'].str.contains(t)]
-#    if (len(search) > 0):
-#        irow = search.iterrows()
-#        for r in irow:
-#            print(r[1]['absolute_url'])
-#            buildTweet(date, r[1]['download_url'])
+for t in a1terms:
+    search = a1date[a1date['plain_text'].str.contains(t)]
+    if (len(search) > 0):
+        irow = search.iterrows()
+        for r in irow:
+            print(r[1]['absolute_url'])
+            buildTweet(date, r[1]['download_url'])
