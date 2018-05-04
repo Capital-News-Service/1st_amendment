@@ -5,9 +5,9 @@
 #### Version 1
 Sends out a tweet when the program runs to a Twitter account.
 * Create a gmail account for bot
-  - @gmail.com
+  - firstamendmentcns@gmail.com
 * Create a Twitter account using gmail account
-  - @
+  - @1st_amendment_4
 * Get keys for Twitter account at apps.twitter.com
 * Create GitHub repo with 4 files: sctutorial.md, sckey.json, readme.md, GitIgnore, & sccode.py
 * Write the following code in pskey.json:
