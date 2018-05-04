@@ -37,7 +37,7 @@ with open("a1keys/a1apikey.json") as file:
 a1_api_key = a1apikey["a1_api_key"]
 
 #calls court listener api and puts results into json and dataframe
-urlcourt = 'https://www.courtlistener.com/api/rest/v3/opinions/?cluster__docket__court__id=ca4'
+urlcourt = 'https://www.courtlistener.com/api/rest/v3/opinions/?cluster_docket_court__id=ca4'
 headers = {'A1-API-KEY': a1_api_key}
 responsecourt = requests.get(urlcourt, headers=headers)
 jsoncourt = responsecourt.json()
@@ -56,18 +56,19 @@ with open('a1terms.txt', 'r') as s:
     a1terms = s.read().splitlines()
     
 #search for md locations only for today
-date = "2018-05-04"
-courtdf = courtdf.replace(np.nan, '', regex=True)
-a1date = courtdf[courtdf['date_created'].str.contains(date)]
-if (len(a1date) > 0):
-    irow = a1date.iterrows()
-    for a in irow:
-        print(a[1]['date_created'])
+date = getDate()
+print(date)
+#courtdf = courtdf.replace(np.nan, '', regex=True)
+#a1date = courtdf[courtdf['date_created'].str.contains(date)]
+#if (len(a1date) > 0):
+#    irow = a1date.iterrows()
+#    for a in irow:
+#        print(a[1]['date_created'])
 
-for t in a1terms:
-    search = a1date[a1date['plain_text'].str.contains(t)]
-    if (len(search) > 0):
-        irow = search.iterrows()
-        for r in irow:
-            print(r[1]['absolute_url'])
-            buildTweet(date, r[1]['download_url'])
+#for t in a1terms:
+#    search = a1date[a1date['plain_text'].str.contains(t)]
+#    if (len(search) > 0):
+#        irow = search.iterrows()
+#        for r in irow:
+#            print(r[1]['absolute_url'])
+#            buildTweet(date, r[1]['download_url'])
