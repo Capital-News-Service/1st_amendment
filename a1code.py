@@ -37,7 +37,7 @@ with open("a1keys/a1apikey.json") as file:
 a1_api_key = a1apikey["a1_api_key"]
 
 #calls court listener api and puts results into json and dataframe
-urlcourt = 'https://www.courtlistener.com/api/rest/v3/opinions/?cluster_docket_court__id=ca4'
+urlcourt = 'https://www.courtlistener.com/api/rest/v3/opinions/?cluster__docket__court__id=ca4&order_by=-date_modified'
 headers = {'A1-API-KEY': a1_api_key}
 responsecourt = requests.get(urlcourt, headers=headers)
 jsoncourt = responsecourt.json()
